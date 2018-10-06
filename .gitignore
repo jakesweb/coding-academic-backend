@@ -1,0 +1,7 @@
+# .gitignore
+# standard node
+
+node_modules/
+
+.env
+env.js
