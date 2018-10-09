@@ -7,7 +7,7 @@ const router = express.Router();
 
 const userController = require('../controllers/user-controller');
 
-router.post('/create', (req,res,next) => { 
+router.post('/create', (req,res) => { 
   userController.create(req.body.email, req.body.password, (err,user) => {
     if (err) {
       res.send(err);
