@@ -44,27 +44,18 @@ Used to store the environment variables.
 
 ---
 
-## Router
-
-#### Home Routes  -- ./router/index.js
-
-* / \- Homepage
-* /signup \- Singnup page
-* /login \- Login page
-* /logout \- Logout GET request -- redirects to either error or homepage
-
-#### User Routes -- ./router/user.js
-* /user/create \- Create the user account \- redirects to either error or success page
-* /user/use \- Login the user and setup session \- redirects to either error or homepage
-
----
-
 ## Controllers
 
 #### User
 * user-controller.js 
 	* create \- adds the user to the database. Returns callback(error, user). User has the user information from the MongoDB save
 	* find \- finds the user to login. Returns callback(error,user.email,user.role) for the session
+
+---
+
+## Middlewares
+
+* auth.js \- used to check if user is authenticated with correct role before allowing access to page
 
 ---
 
@@ -90,6 +81,21 @@ Contains schema for courses
 
 ---
 
+## Router
+
+#### Home Routes  -- ./router/index.js
+
+* / \- Homepage
+* /signup \- Singnup page
+* /login \- Login page
+* /logout \- Logout GET request -- redirects to either error or homepage
+
+#### User Routes -- ./router/user.js
+* /user/create \- Create the user account \- redirects to either error or success page
+* /user/use \- Login the user and setup session \- redirects to either error or homepage
+
+---
+
 ## Views
 
 style stores the CSS files and these are filled in with the include form PUG
@@ -100,10 +106,4 @@ style stores the CSS files and these are filled in with the include form PUG
 * login \- login form
 * signup \- signup form
 * signupsuccess \- signup successfully form
-
----
-
-## Middlewares
-
-* auth.js \- used to check if user is authenticated with correct role before allowing access to page
 
