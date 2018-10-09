@@ -32,6 +32,6 @@ The core server file for the application
 Used to store the environment variables. Current environment variables:
 
   #### MONGO_URI
-  The URI for acccessing the MongoDB database
+  : The URI for acccessing the MongoDB database
   #### SESSION_SECRET
-  The secret for creating the user session
+  : The secret for creating the user session
