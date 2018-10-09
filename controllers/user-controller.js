@@ -37,3 +37,19 @@ exports.create = (email, password, cb) => {
     }
   });
 }
+
+exports.find = (email, password, cb) => {
+  User.findOne({ 'email': email }, 'email password role', (err,user) => {
+    if (err) {
+      return cb(err, null, null);
+    } else {
+      bcrypt.compare(password, user.password, (err,res) => {
+        if (err) {
+          return cb(err, null, null);
+        } else {
+          return cb(null, user.email, user.role);
+        }
+      });
+    }
+  });
+}

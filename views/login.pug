@@ -1,0 +1,13 @@
+html
+  head
+    title Coding Academic
+    style
+      include style/signup.css
+  body
+    h2 Login
+    form(action='/user/use', method='POST')
+      label(for='email') Your Email Address
+      input(type='email', name='email')
+      label(for='password') Your Password
+      input(type='password', name='password')
+      input(type='submit' name='login' label='login')
