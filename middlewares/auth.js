@@ -4,9 +4,9 @@
 */
 
 module.exports = function(req,res,next) {
-  if (req.user) {
+  if (req.session.email && req.session.role) {
     next();
   } else {
-    res.status(401).end();
+    res.render('unauthorized');
   }
 }

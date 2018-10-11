@@ -11,6 +11,9 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// public folder access
+app.use(express.static('public'));
+
 // setup cookies
 app.use(cookieParser());
 app.use(session({ 
@@ -24,13 +27,13 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 // imports for application funcationality
-app.use(require('./middlewares/users'));
 // app.use(require('./controllers'));
 
 // router
 app.use('/', require('./router/index'));
 app.use('/user', require('./router/user'));
+app.use('/admin', require('./router/admin'));
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
   console.log('Listening on port 3000');
 });

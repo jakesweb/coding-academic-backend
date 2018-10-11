@@ -1,0 +1,12 @@
+html
+  head 
+    title= title
+    style
+       include style/homepage.css
+    script(src="http://localhost:3000/js/adminpage.js")
+  body
+    header
+      a(class='nav-link', href='/signup') Signup
+      a(class='nav-link', href='/login') Login
+      a(class='nav-link', href='/logout') Logout
+      a(class='nav-link', href='/showuser') User
