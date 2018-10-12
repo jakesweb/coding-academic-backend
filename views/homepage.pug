@@ -4,8 +4,11 @@ html
     style
        include style/homepage.css
   body
-    header
-      a(class='nav-link', href='/signup') Signup
-      a(class='nav-link', href='/login') Login
-      a(class='nav-link', href='/logout') Logout
-      a(class='nav-link', href='/showuser') User
+    div(class="body-container")
+      div(class="float-container")
+        div(class="nav-container")
+          a(class='nav', href='/signup') Signup
+          a(class='nav', href='/login') Login
+          a(class='nav', href='/logout') Logout
+          a(class='nav', href='/showuser') User
+      h2(class="welcome-text") Hello, Welcome to the Coding Academic
