@@ -2,17 +2,17 @@
   ./controllers/user-controller.js
   used to control the interaction of the user model to the database
 */
-require('../env');
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const User = require('../models/user-model');
+require("../env");
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const User = require("../models/user-model");
 
 mongoose.connect(process.env.MONGO_URI);
 
 // Create user account
 exports.create = (email, password, cb) => {
   // hash password
-  bcrypt.hash(password, 10, (err,hash) => {
+  bcrypt.hash(password, 10, (err, hash) => {
     if (err) {
       // return error to callback
       return cb(err, null);
@@ -21,11 +21,11 @@ exports.create = (email, password, cb) => {
       const user = new User({
         email: email,
         password: hash,
-        role: 'student',
+        role: "student",
         paid: false
       });
       // save user to database
-      user.save(function (err,saveduser) {
+      user.save(function(err, saveduser) {
         if (err) {
           // return error to callback
           return cb(err, null);
@@ -36,14 +36,14 @@ exports.create = (email, password, cb) => {
       });
     }
   });
-}
+};
 
 exports.find = (email, password, cb) => {
-  User.findOne({ 'email': email }, 'email password role', (err,user) => {
+  User.findOne({ email: email }, "email password role", (err, user) => {
     if (err) {
       return cb(err, null, null);
     } else {
-      bcrypt.compare(password, user.password, (err,res) => {
+      bcrypt.compare(password, user.password, (err, res) => {
         if (err) {
           return cb(err, null, null);
         } else {
@@ -52,4 +52,4 @@ exports.find = (email, password, cb) => {
       });
     }
   });
-}
+};
