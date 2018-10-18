@@ -7,7 +7,7 @@ const router = express.Router();
 
 const userController = require("../controllers/user-controller");
 
-router.post("/create", (req, res) => {
+router.post("/singup", (req, res) => {
   userController.create(req.body.email, req.body.password, (err, user) => {
     if (err) {
       res.send(err);
@@ -19,7 +19,7 @@ router.post("/create", (req, res) => {
   });
 });
 
-router.post("/use", (req, res) => {
+router.post("/login", (req, res) => {
   userController.find(req.body.email, req.body.password, (err, email, role) => {
     if (err) {
       res.render("error", {
