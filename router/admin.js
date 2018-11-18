@@ -14,7 +14,7 @@ router.get("/admin", authAdmin, (req, res) => {
 /*
   List all courses
 */
-router.get("/course", authAdmin, (req, res) => {
+router.get("/course", (req, res) => {
   courseController.findAll((err, course) => {
     if (err) {
       res.json({ error: err });

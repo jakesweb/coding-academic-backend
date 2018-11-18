@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
+const cors = require("cors");
 const path = require("path");
 const app = express();
 
@@ -24,6 +25,13 @@ app.use(
   })
 );
 
+// configure cors
+var corsOptions = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
 // setup pug for templates
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
@@ -36,6 +44,6 @@ app.use("/", require("./router/index"));
 app.use("/user", require("./router/user"));
 app.use("/admin", require("./router/admin"));
 
-app.listen(process.env.PORT || 3000, function() {
-  console.log("Listening on port 3000");
+app.listen(process.env.PORT || 3001, function() {
+  console.log("Listening on port 3001");
 });
